@@ -61,14 +61,20 @@
     - Handle audio device issues gracefully
     - Provide user feedback for invalid inputs
 
+15. **Implement audio output device selection** ✅ READY FOR REVIEW
+    - Add device enumeration and selection to AudioStreamManager
+    - Create device selection UI in main window
+    - Support default device and specific device selection
+    - Handle device switching during playback
+
 ## Low Priority Tasks (Polish & Documentation)
 
-15. **Test cross-platform compatibility**
+16. **Test cross-platform compatibility**
     - Test on Windows
     - Test on macOS
     - Test on Linux
 
-16. **Create basic documentation**
+17. **Create basic documentation**
     - Write usage instructions
     - Document technical requirements
     - Add troubleshooting guide

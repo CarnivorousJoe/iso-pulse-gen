@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Briefcase-Version: 0.3.23
+Name: iso-pulse-gen
+Formal-Name: Isochronic Pulse Generator
+App-ID: com.example.iso-pulse-gen
+Version: 0.1.0
+Home-page: https://github.com/example/iso-pulse-gen
+Download-URL: https://github.com/example/iso-pulse-gen
+Author: Isochronic Pulse Generator Project
+Author-email: dev@example.com
+Summary: Desktop application for generating configurable isochronic audio pulses

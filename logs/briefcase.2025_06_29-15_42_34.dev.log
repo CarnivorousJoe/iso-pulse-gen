@@ -1,0 +1,316 @@
+Date/Time:       2025-06-29 15:42:34 
+Command line:    /mnt/d/proj/iso-pulse-gen/.venv/bin/briefcase dev
+
+OS Release:      Linux 6.6.87.1-microsoft-standard-WSL2
+OS Version:      #1 SMP PREEMPT_DYNAMIC Mon Apr 21 17:08:54 UTC 2025
+Architecture:    x86_64
+Platform:        Linux-6.6.87.1-microsoft-standard-WSL2-x86_64-with-glibc2.39
+
+Python exe:      /mnt/d/proj/iso-pulse-gen/.venv/bin/python3
+Python version:  3.12.3 (main, Jun 18 2025, 17:59:45) [GCC 13.3.0]
+Virtual env:     True
+Conda env:       False
+
+Briefcase:       0.3.23
+Target platform: linux
+Target format:   None
+
+Environment Variables:
+	CLAUDECODE=1
+	CLAUDE_CODE_ENTRYPOINT=cli
+	CLAUDE_CODE_SSE_PORT=33684
+	COLORTERM=truecolor
+	COREPACK_ENABLE_AUTO_PIN=0
+	DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+	DISPLAY=:0
+	ENABLE_IDE_INTEGRATION=true
+	GIT_ASKPASS=********************
+	GIT_EDITOR=true
+	HOME=/home/obey
+	HOMEBREW_CELLAR=/home/linuxbrew/.linuxbrew/Cellar
+	HOMEBREW_PREFIX=/home/linuxbrew/.linuxbrew
+	HOMEBREW_REPOSITORY=/home/linuxbrew/.linuxbrew/Homebrew
+	HOSTTYPE=x86_64
+	INFOPATH=/home/linuxbrew/.linuxbrew/share/info:/home/linuxbrew/.linuxbrew/share/info:
+	LANG=C.UTF-8
+	LESSCLOSE=/usr/bin/lesspipe %s %s
+	LESSOPEN=| /usr/bin/lesspipe %s
+	LOGNAME=obey
+	LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:
+	NAME=GUARDIAN
+	NVM_BIN=/home/obey/.nvm/versions/node/v22.17.0/bin
+	NVM_CD_FLAGS=
+	NVM_DIR=/home/obey/.nvm
+	NVM_INC=/home/obey/.nvm/versions/node/v22.17.0/include/node
+	OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE=delta
+	PATH=/mnt/d/proj/iso-pulse-gen/.venv/bin:/home/obey/.local/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/home/obey/.cursor-server/bin/5b19bac7a947f54e4caa3eb7e4c5fbf832389850/bin/remote-cli:/home/obey/.nvm/versions/node/v22.17.0/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Users/OBEY/AppData/Local/Programs/cursor/resources/app/bin:/mnt/c/Program Files/GitHub CLI/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files (x86)/Mikero/DePboTools/bin:/mnt/c/Users/OBEY/AppData/Local/Programs/cursor/resources/app/bin:/mnt/c/Users/OBEY/AppData/Local/Microsoft/WinGet/Packages/astral-sh.uv_Microsoft.Winget.Source_8wekyb3d8bbwe:/mnt/c/Program Files (x86)/Mikero/DePboTools/bin:/snap/bin
+	PULSE_SERVER=unix:/mnt/wslg/PulseServer
+	PWD=/mnt/d/proj/iso-pulse-gen
+	SHELL=/bin/bash
+	SHLVL=2
+	TERM=xterm-256color
+	TERM_PROGRAM=vscode
+	TERM_PROGRAM_VERSION=1.1.6
+	USER=obey
+	UV=/home/obey/.local/bin/uv
+	UV_RUN_RECURSION_DEPTH=1
+	VIRTUAL_ENV=/mnt/d/proj/iso-pulse-gen/.venv
+	VSCODE_GIT_ASKPASS_EXTRA_ARGS=********************
+	VSCODE_GIT_ASKPASS_MAIN=********************
+	VSCODE_GIT_ASKPASS_NODE=********************
+	VSCODE_GIT_IPC_HANDLE=/run/user/1000/vscode-git-e75962b21b.sock
+	VSCODE_IPC_HOOK_CLI=/run/user/1000/vscode-ipc-71a3937a-b583-4346-8a06-683f56839ad7.sock
+	WAYLAND_DISPLAY=wayland-0
+	WSL2_GUI_APPS_ENABLED=1
+	WSLENV=
+	WSL_DISTRO_NAME=Ubuntu
+	WSL_INTEROP=/run/WSL/704_interop
+	XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
+	XDG_RUNTIME_DIR=/run/user/1000/
+	_=/home/obey/.local/bin/uv
+
+pyproject.toml:
+[project]
+name = "iso-pulse-gen"
+version = "0.1.0"
+description = "Desktop application for generating configurable isochronic audio pulses"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "numpy>=1.26.0",
+    "sounddevice>=0.4.6",
+    "PySide6>=6.6.0",
+]
+
+[project.scripts]
+iso-pulse-gen = "main:main"
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=7.4.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+    "briefcase>=0.3.19",
+]
+
+[tool.briefcase]
+project_name = "Isochronic Pulse Generator"
+bundle = "com.example"
+version = "0.1.0"
+url = "https://github.com/example/iso-pulse-gen"
+license = "MIT"
+author = "Isochronic Pulse Generator Project"
+author_email = "dev@example.com"
+description = "Desktop application for generating configurable isochronic audio pulses"
+
+[tool.briefcase.app.iso-pulse-gen]
+formal_name = "Isochronic Pulse Generator"
+description = "Desktop application for generating configurable isochronic audio pulses"
+long_description = """
+The Isochronic Pulse Generator is a desktop application that allows users to configure 
+and play isochronic audio pulses for personal use. Users can adjust pulse frequencies 
+and carrier tones for both the left and right audio channels, either in sync or 
+independently. The modulation uses a square wave for distinct, sharp pulse delivery.
+"""
+sources = [
+    "src/iso_pulse_gen",
+    "main.py",
+]
+test_sources = [
+    "tests",
+]
+
+requires = [
+    "numpy>=1.26.0",
+    "sounddevice>=0.4.6",
+    "PySide6>=6.6.0",
+]
+
+[tool.briefcase.app.iso-pulse-gen.macOS]
+requires = [
+    "numpy>=1.26.0",
+    "sounddevice>=0.4.6", 
+    "PySide6>=6.6.0",
+]
+
+[tool.briefcase.app.iso-pulse-gen.linux]
+requires = [
+    "numpy>=1.26.0",
+    "sounddevice>=0.4.6",
+    "PySide6>=6.6.0",
+]
+system_requires = [
+    "libasound2-dev",
+    "portaudio19-dev",
+]
+
+[tool.briefcase.app.iso-pulse-gen.windows]
+requires = [
+    "numpy>=1.26.0", 
+    "sounddevice>=0.4.6",
+    "PySide6>=6.6.0",
+]
+
+Briefcase Log:
+[15:42:28]                                                                                                                                                             config.py:581
+           *************************************************************************                                                                                   config.py:581
+           ** WARNING: License Definition for the Project is Deprecated           **                                                                                   config.py:581
+           *************************************************************************                                                                                   config.py:581
+                                                                                                                                                                       config.py:581
+               Briefcase now uses PEP 621 format for license definitions.                                                                                              config.py:581
+                                                                                                                                                                       config.py:581
+               Previously, the name of the license was assigned to the 'license'                                                                                       config.py:581
+               field in pyproject.toml. For PEP 621, the name of the license is                                                                                        config.py:581
+               assigned to 'license.text' or the name of the file containing the                                                                                       config.py:581
+               license is assigned to 'license.file'.                                                                                                                  config.py:581
+                                                                                                                                                                       config.py:581
+               The current configuration for the Project has a 'license' field                                                                                         config.py:581
+               that is specified as a string:                                                                                                                          config.py:581
+                                                                                                                                                                       config.py:581
+                   license = "MIT"                                                                                                                                     config.py:581
+                                                                                                                                                                       config.py:581
+               To use the PEP 621 format (and to remove this warning), specify that                                                                                    config.py:581
+               the LICENSE file contains the license for the Project:                                                                                                  config.py:581
+                                                                                                                                                                       config.py:581
+                   license.file = "LICENSE"                                                                                                                            config.py:581
+                                                                                                                                                                       config.py:581
+           *************************************************************************                                                                                   config.py:581
+                                                                                                                                                                          dev.py:241
+           [iso-pulse-gen] Installing requirements...                                                                                                                     dev.py:241
+           Installing dev requirements... started                                                                                                                          dev.py:89
+                                                                                                                                                                   subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     /mnt/d/proj/iso-pulse-gen/.venv/bin/python3 -u -X utf8 -m pip install --upgrade 'numpy>=1.26.0' 'sounddevice>=0.4.6' 'PySide6>=6.6.0'           subprocess.py:838
+           'numpy>=1.26.0' 'sounddevice>=0.4.6' 'PySide6>=6.6.0' 'numpy>=1.26.0' 'sounddevice>=0.4.6' 'PySide6>=6.6.0'                                                              
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     /mnt/d/proj/iso-pulse-gen                                                                                                                       subprocess.py:838
+[15:42:34] Requirement already satisfied: numpy>=1.26.0 in ./.venv/lib/python3.12/site-packages (2.3.1)                                                            subprocess.py:195
+           Requirement already satisfied: sounddevice>=0.4.6 in ./.venv/lib/python3.12/site-packages (0.5.2)                                                       subprocess.py:195
+           Requirement already satisfied: PySide6>=6.6.0 in ./.venv/lib/python3.12/site-packages (6.9.1)                                                           subprocess.py:195
+           Requirement already satisfied: CFFI>=1.0 in ./.venv/lib/python3.12/site-packages (from sounddevice>=0.4.6) (1.17.1)                                     subprocess.py:195
+           Requirement already satisfied: shiboken6==6.9.1 in ./.venv/lib/python3.12/site-packages (from PySide6>=6.6.0) (6.9.1)                                   subprocess.py:195
+           Requirement already satisfied: PySide6-Essentials==6.9.1 in ./.venv/lib/python3.12/site-packages (from PySide6>=6.6.0) (6.9.1)                          subprocess.py:195
+           Requirement already satisfied: PySide6-Addons==6.9.1 in ./.venv/lib/python3.12/site-packages (from PySide6>=6.6.0) (6.9.1)                              subprocess.py:195
+           Requirement already satisfied: pycparser in ./.venv/lib/python3.12/site-packages (from CFFI>=1.0->sounddevice>=0.4.6) (2.22)                            subprocess.py:195
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           Installing dev requirements... done                                                                                                                             dev.py:89
+                                                                                                                                                                          dev.py:251
+           [iso-pulse-gen] Starting in dev mode...                                                                                                                        dev.py:251
+                                                                                                                                                                   subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     /mnt/d/proj/iso-pulse-gen/.venv/bin/python3 -c 'import runpy, sys;sys.path.pop(0);sys.argv.extend([]);runpy.run_module("iso_pulse_gen",         subprocess.py:838
+           run_name="__main__", alter_sys=True)'                                                                                                                                    
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     /home/obey                                                                                                                                      subprocess.py:838
+           >>> Environment Overrides:                                                                                                                              subprocess.py:838
+           >>>     PYTHONPATH=/mnt/d/proj/iso-pulse-gen/src:/mnt/d/proj/iso-pulse-gen                                                                              subprocess.py:838
+           >>>     PYTHONUNBUFFERED=1                                                                                                                              subprocess.py:838
+           >>>     PYTHONDEVMODE=1                                                                                                                                 subprocess.py:838
+           >>>     PYTHONUTF8=1                                                                                                                                    subprocess.py:838
+           ===========================================================================                                                                                    run.py:171
+           Traceback (most recent call last):                                                                                                                      subprocess.py:195
+             File "<frozen runpy>", line 148, in _get_module_details                                                                                               subprocess.py:195
+             File "<frozen runpy>", line 142, in _get_module_details                                                                                               subprocess.py:195
+           ImportError: No module named iso_pulse_gen.__main__                                                                                                     subprocess.py:195
+                                                                                                                                                                   subprocess.py:195
+           During handling of the above exception, another exception occurred:                                                                                     subprocess.py:195
+                                                                                                                                                                   subprocess.py:195
+           Traceback (most recent call last):                                                                                                                      subprocess.py:195
+             File "<string>", line 1, in <module>                                                                                                                  subprocess.py:195
+             File "<frozen runpy>", line 222, in run_module                                                                                                        subprocess.py:195
+             File "<frozen runpy>", line 152, in _get_module_details                                                                                               subprocess.py:195
+           ImportError: No module named iso_pulse_gen.__main__; 'iso_pulse_gen' is a package and cannot be directly executed                                       subprocess.py:195
+                                                                                                                                                                      __main__.py:42
+           Problem running app iso-pulse-gen.                                                                                                                         __main__.py:43
+           Saving log... started                                                                                                                                      console.py:433
+
+Main thread traceback:
+╭─────────────────────────────────────────────────────────────────────── Traceback (most recent call last) ────────────────────────────────────────────────────────────────────────╮
+│ /mnt/d/proj/iso-pulse-gen/.venv/lib/python3.12/site-packages/briefcase/__main__.py:27 in main                                                                                    │
+│                                                                                                                                                                                  │
+│   24 │   │   │   Path.cwd() / "pyproject.toml",                                                                                                                                  │
+│   25 │   │   │   overrides=overrides,                                                                                                                                            │
+│   26 │   │   )                                                                                                                                                                   │
+│ ❱ 27 │   │   command(**options)                                                                                                                                                  │
+│   28 │   except HelpText as e:                                                                                                                                                   │
+│   29 │   │   console.info()                                                                                                                                                      │
+│   30 │   │   console.info(str(e))                                                                                                                                                │
+│                                                                                                                                                                                  │
+│ ╭──────────────────────────────────────────────────────── locals ─────────────────────────────────────────────────────────╮                                                      │
+│ │       command = <briefcase.commands.dev.DevCommand object at 0x726dd9de7a70>                                            │                                                      │
+│ │       console = <briefcase.console.Console object at 0x726ddb5583e0>                                                    │                                                      │
+│ │             e = BriefcaseCommandError('Problem running app iso-pulse-gen.')                                             │                                                      │
+│ │ extra_cmdline = []                                                                                                      │                                                      │
+│ │       options = {'appname': None, 'update_requirements': False, 'run_app': True, 'test_mode': False, 'passthrough': []} │                                                      │
+│ │     overrides = {}                                                                                                      │                                                      │
+│ │        result = 200                                                                                                     │                                                      │
+│ ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯                                                      │
+│                                                                                                                                                                                  │
+│ /mnt/d/proj/iso-pulse-gen/.venv/lib/python3.12/site-packages/briefcase/commands/dev.py:253 in __call__                                                                           │
+│                                                                                                                                                                                  │
+│   250 │   │   │   else:                                                                                                                                                          │
+│   251 │   │   │   │   self.console.info("Starting in dev mode...", prefix=app.app_name)                                                                                          │
+│   252 │   │   │   env = self.get_environment(app, test_mode=test_mode)                                                                                                           │
+│ ❱ 253 │   │   │   return self.run_dev_app(                                                                                                                                       │
+│   254 │   │   │   │   app,                                                                                                                                                       │
+│   255 │   │   │   │   env,                                                                                                                                                       │
+│   256 │   │   │   │   test_mode=test_mode,                                                                                                                                       │
+│                                                                                                                                                                                  │
+│ ╭───────────────────────────────────────────────────────────────────────────── locals ──────────────────────────────────────────────────────────────────────────────╮            │
+│ │                 app = <com.example.iso-pulse-gen v0.1.0 AppConfig>                                                                                                │            │
+│ │             appname = None                                                                                                                                        │            │
+│ │      dist_info_path = PosixPath('/mnt/d/proj/iso-pulse-gen/src/iso_pulse_gen.dist-info')                                                                          │            │
+│ │                 env = {'PYTHONPATH': '/mnt/d/proj/iso-pulse-gen/src:/mnt/d/proj/iso-pulse-gen', 'PYTHONUNBUFFERED': '1', 'PYTHONDEVMODE': '1', 'PYTHONUTF8': '1'} │            │
+│ │             options = {}                                                                                                                                          │            │
+│ │         passthrough = []                                                                                                                                          │            │
+│ │             run_app = True                                                                                                                                        │            │
+│ │                self = <briefcase.commands.dev.DevCommand object at 0x726dd9de7a70>                                                                                │            │
+│ │           test_mode = False                                                                                                                                       │            │
+│ │ update_requirements = False                                                                                                                                       │            │
+│ ╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯            │
+│                                                                                                                                                                                  │
+│ /mnt/d/proj/iso-pulse-gen/.venv/lib/python3.12/site-packages/briefcase/commands/dev.py:170 in run_dev_app                                                                        │
+│                                                                                                                                                                                  │
+│   167 │   │   │   )                                                                                                                                                              │
+│   168 │   │   │                                                                                                                                                                  │
+│   169 │   │   │   # Start streaming logs for the app.                                                                                                                            │
+│ ❱ 170 │   │   │   self._stream_app_logs(                                                                                                                                         │
+│   171 │   │   │   │   app,                                                                                                                                                       │
+│   172 │   │   │   │   popen=app_popen,                                                                                                                                           │
+│   173 │   │   │   │   test_mode=test_mode,                                                                                                                                       │
+│                                                                                                                                                                                  │
+│ ╭────────────────────────────────────────────────────────────────────────── locals ──────────────────────────────────────────────────────────────────────────╮                   │
+│ │         app = <com.example.iso-pulse-gen v0.1.0 AppConfig>                                                                                                 │                   │
+│ │   app_popen = <Popen: returncode: 1 args: ['/mnt/d/proj/iso-pulse-gen/.venv/bin/python3', ...>                                                             │                   │
+│ │     cmdline = ['/mnt/d/proj/iso-pulse-gen/.venv/bin/python3', '-c', 'import runpy, sys;sys.path.pop(0);sys.argv.extend([]);runpy.run_module("iso_puls'+44] │                   │
+│ │         env = {'PYTHONPATH': '/mnt/d/proj/iso-pulse-gen/src:/mnt/d/proj/iso-pulse-gen', 'PYTHONUNBUFFERED': '1', 'PYTHONDEVMODE': '1', 'PYTHONUTF8': '1'}  │                   │
+│ │ main_module = 'iso_pulse_gen'                                                                                                                              │                   │
+│ │     options = {}                                                                                                                                           │                   │
+│ │ passthrough = []                                                                                                                                           │                   │
+│ │        self = <briefcase.commands.dev.DevCommand object at 0x726dd9de7a70>                                                                                 │                   │
+│ │   test_mode = False                                                                                                                                        │                   │
+│ ╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯                   │
+│                                                                                                                                                                                  │
+│ /mnt/d/proj/iso-pulse-gen/.venv/lib/python3.12/site-packages/briefcase/commands/run.py:202 in _stream_app_logs                                                                   │
+│                                                                                                                                                                                  │
+│   199 │   │   │   │   # If we're monitoring an actual app (not just a log stream),                                                                                               │
+│   200 │   │   │   │   # and the app didn't exit cleanly, surface the error to the user.                                                                                          │
+│   201 │   │   │   │   if popen.poll() != 0:                                                                                                                                      │
+│ ❱ 202 │   │   │   │   │   raise BriefcaseCommandError(f"Problem running app {app.app_name}.")                                                                                    │
+│   203 │   │                                                                                                                                                                      │
+│   204 │   │   except KeyboardInterrupt:                                                                                                                                          │
+│   205 │   │   │   pass  # Catch CTRL-C to exit normally                                                                                                                          │
+│                                                                                                                                                                                  │
+│ ╭──────────────────────────────────────────── locals ─────────────────────────────────────────────╮                                                                              │
+│ │          app = <com.example.iso-pulse-gen v0.1.0 AppConfig>                                     │                                                                              │
+│ │ clean_filter = None                                                                             │                                                                              │
+│ │ clean_output = False                                                                            │                                                                              │
+│ │   log_filter = <briefcase.commands.run.LogFilter object at 0x726dd98c1700>                      │                                                                              │
+│ │   log_stream = False                                                                            │                                                                              │
+│ │        popen = <Popen: returncode: 1 args: ['/mnt/d/proj/iso-pulse-gen/.venv/bin/python3', ...> │                                                                              │
+│ │         self = <briefcase.commands.dev.DevCommand object at 0x726dd9de7a70>                     │                                                                              │
+│ │    test_mode = False                                                                            │                                                                              │
+│ ╰─────────────────────────────────────────────────────────────────────────────────────────────────╯                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+BriefcaseCommandError: Problem running app iso-pulse-gen.

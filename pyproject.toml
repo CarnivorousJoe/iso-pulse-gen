@@ -9,6 +9,7 @@ dependencies = [
     "sounddevice>=0.4.6",
     "PySide6>=6.6.0",
 ]
+license = {text = "MIT"}
 
 [project.scripts]
 iso-pulse-gen = "main:main"
@@ -18,4 +19,72 @@ dev-dependencies = [
     "pytest>=7.4.0",
     "black>=23.0.0",
     "ruff>=0.1.0",
+    "briefcase>=0.3.19",
 ]
+
+[tool.briefcase]
+project_name = "Isochronic Pulse Generator"
+bundle = "com.example"
+version = "0.1.0"
+url = "https://github.com/example/iso-pulse-gen"
+author = "Isochronic Pulse Generator Project"
+author_email = "dev@example.com"
+description = "Desktop application for generating configurable isochronic audio pulses"
+
+[tool.briefcase.app.iso-pulse-gen]
+formal_name = "Isochronic Pulse Generator"
+description = "Desktop application for generating configurable isochronic audio pulses"
+long_description = """
+The Isochronic Pulse Generator is a desktop application that allows users to configure 
+and play isochronic audio pulses for personal use. Users can adjust pulse frequencies 
+and carrier tones for both the left and right audio channels, either in sync or 
+independently. The modulation uses a square wave for distinct, sharp pulse delivery.
+"""
+sources = [
+    "src/iso_pulse_gen",
+    "main.py",
+]
+test_sources = [
+    "tests",
+]
+
+requires = [
+    "numpy>=1.26.0",
+    "sounddevice>=0.4.6",
+    "PySide6>=6.6.0",
+]
+
+[tool.briefcase.app.iso-pulse-gen.macOS]
+requires = [
+    "numpy>=1.26.0",
+    "sounddevice>=0.4.6", 
+    "PySide6>=6.6.0",
+]
+
+[tool.briefcase.app.iso-pulse-gen.linux]
+requires = [
+    "numpy>=1.26.0",
+    "sounddevice>=0.4.6",
+    "PySide6>=6.6.0",
+]
+system_requires = [
+    "libasound2-dev",
+    "portaudio19-dev",
+]
+
+[tool.briefcase.app.iso-pulse-gen.windows]
+requires = [
+    "numpy>=1.26.0", 
+    "sounddevice>=0.4.6",
+    "PySide6>=6.6.0",
+]
+
+# Windows-specific configuration for portable executable
+icon = "icon"  # Will look for icon.ico in the project root
+console_app = false
+document_types = []
+
+[tool.briefcase.app.iso-pulse-gen.windows.app]
+# Portable Windows executable configuration
+packaging_format = "zip"  # Creates a portable zip package
+requires_display = true

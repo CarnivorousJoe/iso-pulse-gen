@@ -1,0 +1,59 @@
+{
+    "name": "Windows Briefcase Build Environment",
+    "image": "mcr.microsoft.com/windows/servercore:ltsc2019",
+    
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-python.black-formatter",
+                "charliermarsh.ruff"
+            ]
+        }
+    },
+
+    "postCreateCommand": [
+        "powershell", "-Command", 
+        "# Install Chocolatey package manager",
+        "Set-ExecutionPolicy Bypass -Scope Process -Force;",
+        "[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;",
+        "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'));",
+        
+        "# Install Python via Chocolatey", 
+        "choco install python312 -y;",
+        
+        "# Install UV package manager",
+        "python -m pip install uv;",
+        
+        "# Install project dependencies",
+        "uv sync;",
+        
+        "# Verify installations",
+        "python --version;",
+        "uv --version;",
+        "python -c 'import PySide6; print(\"PySide6 available\")'"
+    ],
+
+    "features": {},
+    
+    "remoteUser": "ContainerAdministrator",
+    
+    "workspaceFolder": "C:\\workspace",
+    
+    "mounts": [
+        "source=${localWorkspaceFolder},target=C:\\workspace,type=bind"
+    ],
+    
+    "containerEnv": {
+        "PYTHONPATH": "C:\\workspace\\src",
+        "UV_CACHE_DIR": "C:\\temp\\uv-cache"
+    },
+    
+    "onCreateCommand": [
+        "powershell", "-Command",
+        "# Create necessary directories",
+        "New-Item -ItemType Directory -Force -Path C:\\temp\\uv-cache;",
+        "New-Item -ItemType Directory -Force -Path C:\\workspace\\dist"
+    ]
+}

@@ -61,6 +61,52 @@
     - Handle audio device issues gracefully
     - Provide user feedback for invalid inputs
 
+## URGENT: Audio Debug & Fix Tasks
+
+**Issue**: Application connects to audio device but produces no sound output.
+
+### Phase 1: Immediate Diagnosis (High Priority)
+
+1. **Add audio callback logging to verify callback is being called** ✅ READY FOR REVIEW
+   - Add debug prints in _audio_callback to confirm execution
+   - Log callback frequency and timing
+
+2. **Implement RMS level monitoring in callback to detect if signal contains audio** ✅ READY FOR REVIEW
+   - Calculate RMS level of generated audio data
+   - Log signal levels to verify non-zero audio generation
+
+3. **Add volume/gain parameter to AudioGenerator (default 0.3-0.5)** ✅ READY FOR REVIEW
+   - Add master volume control to scale output amplitude
+   - Ensure signal is audible without clipping
+
+4. **Add comprehensive stream error handling with specific PortAudio error messages** ✅ READY FOR REVIEW
+   - Wrap stream operations with detailed exception handling
+   - Log specific PortAudio error codes and messages
+
+### Phase 2: Stream Validation (Medium Priority)
+
+5. **Verify selected device supports stream parameters (sample rate, channels, format)**
+   - Query device capabilities before stream creation
+   - Validate compatibility with 44.1kHz, stereo, float32
+
+6. **Add callback status monitoring and logging for underflow/overflow detection**
+   - Monitor and log all callback status flags
+   - Detect and report buffer underruns/overruns
+
+7. **Add debug GUI controls for volume and signal monitoring**
+   - Add volume slider to main window
+   - Display real-time signal level meters
+
+### Phase 3: Testing & Validation (Low Priority)
+
+8. **Test with different volume levels and frequencies to isolate the issue**
+   - Systematic testing across parameter ranges
+   - Document working vs non-working configurations
+
+9. **Add audio buffer validation to ensure proper data format**
+   - Verify output buffer contains expected float32 values
+   - Check for NaN, infinity, or out-of-range values
+
 15. **Implement audio output device selection** ✅ READY FOR REVIEW
     - Add device enumeration and selection to AudioStreamManager
     - Create device selection UI in main window

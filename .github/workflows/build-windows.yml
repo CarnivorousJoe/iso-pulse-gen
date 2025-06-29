@@ -51,7 +51,7 @@ jobs:
       run: |
         # Test that the executable can start (will fail due to no display, but should validate basic structure)
         # This is a smoke test to ensure the build is structurally sound
-        if (Test-Path "dist/windows/app/Isochronic Pulse Generator/Isochronic Pulse Generator.exe") {
+        if (Test-Path "build/iso-pulse-gen/windows/app/src/Isochronic Pulse Generator.exe") {
           Write-Host "✅ Executable created successfully"
         } else {
           Write-Host "❌ Executable not found"
@@ -64,7 +64,7 @@ jobs:
         name: isochronic-pulse-generator-windows
         path: |
           dist/Isochronic_Pulse_Generator-*.zip
-          dist/windows/app/**/*
+          build/iso-pulse-gen/windows/app/**/*
         retention-days: 30
         
     - name: Create Release
@@ -96,6 +96,7 @@ jobs:
           
         files: |
           dist/Isochronic_Pulse_Generator-*.zip
+          build/iso-pulse-gen/windows/app/src/Isochronic Pulse Generator.exe
         draft: false
         prerelease: false
       env:

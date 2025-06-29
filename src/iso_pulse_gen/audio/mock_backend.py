@@ -14,12 +14,15 @@ class MockOutputStream:
         channels: int,
         callback: Callable,
         dtype: str,
+        device=None,
+        **kwargs,
     ):
         self.samplerate = samplerate
         self.blocksize = blocksize
         self.channels = channels
         self.callback = callback
         self.dtype = dtype
+        self.device = device
         self.is_active = False
         self._thread: Optional[threading.Thread] = None
         self._stop_event = threading.Event()
@@ -77,12 +80,26 @@ def query_devices():
     """Mock implementation of sounddevice.query_devices()"""
     return [
         {
-            "name": "Mock Audio Device (WSL)",
+            "name": "Mock Default Audio Device (WSL)",
             "channels": 2,
             "default_samplerate": 44100.0,
             "max_input_channels": 0,
             "max_output_channels": 2,
-        }
+        },
+        {
+            "name": "Mock Secondary Audio Device (WSL)",
+            "channels": 2,
+            "default_samplerate": 48000.0,
+            "max_input_channels": 0,
+            "max_output_channels": 2,
+        },
+        {
+            "name": "Mock Headphones Device (WSL)",
+            "channels": 2,
+            "default_samplerate": 44100.0,
+            "max_input_channels": 0,
+            "max_output_channels": 2,
+        },
     ]
 
 

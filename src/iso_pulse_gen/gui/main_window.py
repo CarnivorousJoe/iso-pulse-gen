@@ -10,6 +10,7 @@ from PySide6.QtWidgets import (
     QGroupBox,
     QGridLayout,
     QMessageBox,
+    QComboBox,
 )
 from PySide6.QtGui import QDoubleValidator
 from ..audio.stream_manager import AudioStreamManager
@@ -23,7 +24,7 @@ class MainWindow(QMainWindow):
         self.setMaximumSize(800, 500)
 
         self.audio_manager = AudioStreamManager()
-        
+
         # Show audio backend in title if using mock
         if self.audio_manager.backend == "mock":
             self.setWindowTitle("Isochronic Pulse Generator (Mock Audio - No Sound)")
@@ -38,6 +39,10 @@ class MainWindow(QMainWindow):
 
         main_layout = QVBoxLayout(central_widget)
         main_layout.setSpacing(20)
+
+        # Audio Device Selection
+        device_group = self._create_device_selection_group()
+        main_layout.addWidget(device_group)
 
         left_group = self._create_channel_group("Left Channel", is_left=True)
         main_layout.addWidget(left_group)
@@ -82,9 +87,33 @@ class MainWindow(QMainWindow):
 
         return group
 
+    def _create_device_selection_group(self) -> QGroupBox:
+        group = QGroupBox("Audio Output Device")
+        layout = QHBoxLayout()
+
+        layout.addWidget(QLabel("Device:"))
+        self.device_combo = QComboBox()
+        self.device_combo.setMinimumWidth(300)
+        layout.addWidget(self.device_combo)
+
+        # Add refresh button for device list
+        refresh_button = QPushButton("Refresh")
+        refresh_button.setMaximumWidth(80)
+        refresh_button.clicked.connect(self._refresh_devices)
+        layout.addWidget(refresh_button)
+
+        layout.addStretch()
+        group.setLayout(layout)
+
+        # Populate devices on startup
+        self._refresh_devices()
+
+        return group
+
     def _connect_signals(self):
         self.play_button.clicked.connect(self._on_play_clicked)
         self.link_channels_checkbox.toggled.connect(self._on_link_channels_toggled)
+        self.device_combo.currentIndexChanged.connect(self._on_device_changed)
 
         self.left_carrier_input.textChanged.connect(self._on_left_params_changed)
         self.left_pulse_input.textChanged.connect(self._on_left_params_changed)
@@ -141,6 +170,45 @@ class MainWindow(QMainWindow):
                 self.audio_manager.set_right_parameters(right_carrier, right_pulse)
         except ValueError:
             pass
+
+    def _refresh_devices(self):
+        """Refresh the list of available audio devices"""
+        try:
+            self.device_combo.clear()
+
+            # Add default device option
+            self.device_combo.addItem("Default Device", None)
+
+            # Get available devices
+            devices = self.audio_manager.get_available_devices()
+            for device in devices:
+                device_name = f"{device['name']} ({device['channels']} ch, {device['default_samplerate']:.0f} Hz)"
+                self.device_combo.addItem(device_name, device["index"])
+
+        except Exception as e:
+            QMessageBox.warning(
+                self,
+                "Device Enumeration Error",
+                f"Could not enumerate audio devices: {str(e)}",
+            )
+
+    def _on_device_changed(self, index):
+        """Handle audio device selection change"""
+        try:
+            device_index = self.device_combo.itemData(index)
+            self.audio_manager.set_output_device(device_index)
+
+            # Show selected device info in status
+            device_info = self.audio_manager.get_current_device_info()
+            if self.audio_manager.backend == "mock":
+                print(f"Selected device: {device_info['name']} (Mock Backend)")
+            else:
+                print(f"Selected device: {device_info['name']}")
+
+        except Exception as e:
+            QMessageBox.critical(
+                self, "Device Selection Error", f"Could not set audio device: {str(e)}"
+            )
 
     def closeEvent(self, event):
         self.audio_manager.stop()

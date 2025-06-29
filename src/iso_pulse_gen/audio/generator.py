@@ -2,8 +2,9 @@ import numpy as np
 
 
 class AudioGenerator:
-    def __init__(self, sample_rate: int = 44100):
+    def __init__(self, sample_rate: int = 44100, volume: float = 0.4):
         self.sample_rate = sample_rate
+        self.volume = max(0.0, min(1.0, volume))  # Clamp volume between 0.0 and 1.0
         self.phase_left = 0.0
         self.phase_right = 0.0
         self.pulse_phase_left = 0.0
@@ -26,6 +27,8 @@ class AudioGenerator:
         )
 
         stereo_frames = np.column_stack((left_channel, right_channel))
+        # Apply volume gain
+        stereo_frames *= self.volume
         return stereo_frames.astype(np.float32)
 
     def _generate_channel(
@@ -68,3 +71,7 @@ class AudioGenerator:
         self.phase_right = 0.0
         self.pulse_phase_left = 0.0
         self.pulse_phase_right = 0.0
+    
+    def set_volume(self, volume: float):
+        """Set the master volume (0.0 to 1.0)"""
+        self.volume = max(0.0, min(1.0, volume))

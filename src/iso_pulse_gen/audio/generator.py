@@ -1,14 +1,21 @@
 import numpy as np
+import logging
 
 
 class AudioGenerator:
     def __init__(self, sample_rate: int = 44100, volume: float = 0.4):
+        self.logger = logging.getLogger(__name__)
         self.sample_rate = sample_rate
         self.volume = max(0.0, min(1.0, volume))  # Clamp volume between 0.0 and 1.0
         self.phase_left = 0.0
         self.phase_right = 0.0
         self.pulse_phase_left = 0.0
         self.pulse_phase_right = 0.0
+        
+        self.logger.info(f"AudioGenerator initialized - SR: {sample_rate}Hz, Volume: {volume}")
+        
+        # Track generation statistics for debugging
+        self._generation_count = 0
 
     def generate_stereo_frames(
         self,
@@ -35,6 +42,7 @@ class AudioGenerator:
         self, num_frames: int, carrier_freq: float, pulse_freq: float, is_left: bool
     ) -> np.ndarray:
         if carrier_freq <= 0 or pulse_freq <= 0:
+            self.logger.warning(f"Invalid frequencies for {'left' if is_left else 'right'} channel: carrier={carrier_freq}Hz, pulse={pulse_freq}Hz")
             return np.zeros(num_frames)
 
         t = np.arange(num_frames) / self.sample_rate
@@ -67,11 +75,15 @@ class AudioGenerator:
         return modulated_wave
 
     def reset_phases(self):
+        self.logger.debug("Resetting audio generation phases")
         self.phase_left = 0.0
         self.phase_right = 0.0
         self.pulse_phase_left = 0.0
         self.pulse_phase_right = 0.0
+        self._generation_count = 0
     
     def set_volume(self, volume: float):
         """Set the master volume (0.0 to 1.0)"""
+        old_volume = self.volume
         self.volume = max(0.0, min(1.0, volume))
+        self.logger.info(f"Volume changed from {old_volume:.3f} to {self.volume:.3f}")

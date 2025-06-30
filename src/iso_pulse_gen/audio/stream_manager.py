@@ -2,6 +2,7 @@ import threading
 from typing import Optional
 import numpy as np
 import sys
+import logging
 from .generator import AudioGenerator
 
 # Try to import sounddevice, fall back to mock if not available
@@ -22,6 +23,8 @@ except (OSError, ImportError):
 
 class AudioStreamManager:
     def __init__(self, sample_rate: int = 44100, block_size: int = 512, volume: float = 0.4):
+        self.logger = logging.getLogger(__name__)
+        
         self.sample_rate = sample_rate
         self.block_size = block_size
         self.generator = AudioGenerator(sample_rate, volume)
@@ -37,10 +40,14 @@ class AudioStreamManager:
         self.channels_linked = True
         self.backend = AUDIO_BACKEND
         self.selected_device = None  # None means use default device
+        
+        self.logger.info(f"AudioStreamManager initialized - SR: {sample_rate}Hz, Block: {block_size}, Backend: {AUDIO_BACKEND}")
+        self.logger.info(f"Default parameters - Carrier: {self.left_carrier_freq}Hz, Pulse: {self.left_pulse_freq}Hz, Volume: {volume}")
 
     def get_available_devices(self):
         """Get list of available audio output devices"""
         try:
+            self.logger.debug("Querying available audio devices...")
             devices = sd.query_devices()
             # Filter for devices that support output
             output_devices = []
@@ -77,18 +84,20 @@ class AudioStreamManager:
                         }
                     )
                     break
+            self.logger.info(f"Found {len(output_devices)} available audio output devices")
             return output_devices
         except Exception as e:
-            print(f"Error querying audio devices: {e}")
+            self.logger.error(f"Error querying audio devices: {e}")
             return []
 
     def set_output_device(self, device_index: Optional[int]):
         """Set the output device by index. None means use default device."""
         with self._lock:
             if self.is_playing:
-                # Stop current playback before changing devices
+                self.logger.info("Stopping playback to change audio device")
                 self.stop()
             self.selected_device = device_index
+            self.logger.info(f"Audio output device set to: {device_index if device_index is not None else 'Default'}")
 
     def get_current_device_info(self):
         """Get information about the currently selected device"""
@@ -108,19 +117,23 @@ class AudioStreamManager:
         with self._lock:
             self.left_carrier_freq = max(0.0, carrier_freq)
             self.left_pulse_freq = max(0.0, pulse_freq)
+            self.logger.debug(f"Left channel parameters set - Carrier: {self.left_carrier_freq}Hz, Pulse: {self.left_pulse_freq}Hz")
 
             if self.channels_linked:
                 self.right_carrier_freq = self.left_carrier_freq
                 self.right_pulse_freq = self.left_pulse_freq
+                self.logger.debug("Right channel synced to left channel parameters")
 
     def set_right_parameters(self, carrier_freq: float, pulse_freq: float):
         with self._lock:
             self.right_carrier_freq = max(0.0, carrier_freq)
             self.right_pulse_freq = max(0.0, pulse_freq)
+            self.logger.debug(f"Right channel parameters set - Carrier: {self.right_carrier_freq}Hz, Pulse: {self.right_pulse_freq}Hz")
 
             if self.channels_linked:
                 self.left_carrier_freq = self.right_carrier_freq
                 self.left_pulse_freq = self.right_pulse_freq
+                self.logger.debug("Left channel synced to right channel parameters")
 
     def set_channels_linked(self, linked: bool):
         with self._lock:
@@ -136,10 +149,10 @@ class AudioStreamManager:
 
     def _audio_callback(self, outdata: np.ndarray, frames: int, time_info, status):
         if status:
-            print(f"Audio stream status: {status}")
+            self.logger.warning(f"Audio stream status: {status}")
 
-        # Debug logging to verify callback is being called
-        print(f"Audio callback called: frames={frames}, time={time_info}")
+        # Only log callback details at debug level to avoid spam
+        self.logger.debug(f"Audio callback - frames: {frames}, timestamp: {time_info}")
 
         with self._lock:
             audio_data = self.generator.generate_stereo_frames(
@@ -155,20 +168,32 @@ class AudioStreamManager:
         rms_right = np.sqrt(np.mean(audio_data[:, 1] ** 2))
         rms_total = np.sqrt(np.mean(audio_data ** 2))
         
-        print(f"RMS levels - Left: {rms_left:.6f}, Right: {rms_right:.6f}, Total: {rms_total:.6f}")
+        # Log audio levels (but not too frequently)
+        if hasattr(self, '_callback_count'):
+            self._callback_count += 1
+        else:
+            self._callback_count = 0
+            
+        # Log audio levels every 100 callbacks (roughly every 2-3 seconds at typical rates)
+        if self._callback_count % 100 == 0:
+            self.logger.info(f"Audio levels - Left RMS: {rms_left:.6f}, Right RMS: {rms_right:.6f}, Total RMS: {rms_total:.6f}")
         
-        # Check for silent output
+        # Check for silent output and warn immediately
         if rms_total < 1e-10:
-            print("WARNING: Audio output is essentially silent!")
+            self.logger.warning("Audio output is essentially silent! Check audio generation parameters.")
 
         outdata[:] = audio_data
 
     def start(self):
         if self.is_playing:
+            self.logger.debug("Start() called but audio is already playing")
             return
 
         try:
+            self.logger.info("Starting audio stream...")
             self.generator.reset_phases()
+            self._callback_count = 0  # Reset callback counter
+            
             # Build stream parameters
             stream_params = {
                 "samplerate": self.sample_rate,
@@ -181,15 +206,17 @@ class AudioStreamManager:
             # Add device parameter if a specific device is selected
             if self.selected_device is not None:
                 stream_params["device"] = self.selected_device
-                print(f"Starting audio stream with device: {self.selected_device}")
+                self.logger.info(f"Using audio device index: {self.selected_device}")
             else:
-                print("Starting audio stream with default device")
+                self.logger.info("Using default audio device")
 
-            print(f"Stream parameters: {stream_params}")
+            self.logger.info(f"Stream parameters: SR={self.sample_rate}Hz, Block={self.block_size}, Channels=2, Device={self.selected_device}")
+            self.logger.info(f"Audio parameters: L[{self.left_carrier_freq}Hz carrier, {self.left_pulse_freq}Hz pulse] R[{self.right_carrier_freq}Hz carrier, {self.right_pulse_freq}Hz pulse]")
+            
             self.stream = sd.OutputStream(**stream_params)
             self.stream.start()
             self.is_playing = True
-            print("Audio stream started successfully")
+            self.logger.info("Audio stream started successfully")
             
         except sd.PortAudioError as e:
             error_msg = f"PortAudio Error: {e}"
@@ -207,35 +234,37 @@ class AudioStreamManager:
             elif "Insufficient memory" in str(e):
                 error_msg += " - Insufficient memory to start audio stream"
             
-            print(error_msg)
+            self.logger.error(error_msg)
             self.is_playing = False
             raise RuntimeError(error_msg) from e
             
         except ImportError as e:
             error_msg = f"Audio backend import error: {e} - PortAudio may not be installed"
-            print(error_msg)
+            self.logger.error(error_msg)
             self.is_playing = False
             raise RuntimeError(error_msg) from e
             
         except Exception as e:
             error_msg = f"Unexpected error starting audio stream: {type(e).__name__}: {e}"
-            print(error_msg)
+            self.logger.error(error_msg)
             self.is_playing = False
             raise RuntimeError(error_msg) from e
 
     def stop(self):
         if not self.is_playing:
+            self.logger.debug("Stop() called but audio is not playing")
             return
 
+        self.logger.info("Stopping audio stream...")
         self.is_playing = False
         if self.stream:
             try:
                 self.stream.stop()
                 self.stream.close()
                 self.stream = None
-                print("Audio stream stopped successfully")
+                self.logger.info("Audio stream stopped successfully")
             except Exception as e:
-                print(f"Error stopping audio stream: {type(e).__name__}: {e}")
+                self.logger.error(f"Error stopping audio stream: {type(e).__name__}: {e}")
                 self.stream = None  # Ensure stream is cleared even if stop/close fails
 
     def toggle_playback(self) -> bool:
